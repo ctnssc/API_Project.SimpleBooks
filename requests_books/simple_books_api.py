@@ -39,7 +39,7 @@ class SimpleBooksRequests():
         response = requests.get(get_all_books_url)
         return response
 
-    def getnerate_token(self):
+    def generate_token(self):
         auth_url = self.BASE_URL + self.API_AUTH_ENDPOINT
         random_number = random.randint(1, 99999999999999999999)
 
@@ -56,15 +56,15 @@ class SimpleBooksRequests():
 
     def submit_order(self, access_token, book_id, customer_name):
         submit_order_url = self.BASE_URL + self.ORDERS_ENDPOINT
-        hearders_params = {"Authorization": access_token}
+        headers_params = {"Authorization": access_token}
 
         #Documentatie :POST [NECESITA BODY] de tip JSON:request_body,
         # necesita autorizatie:headers_params
         request_body = {
-            "bookID": book_id,
+            "bookId": book_id,
             "customerName": customer_name
         }
-        response = requests.post(submit_order_url, json=request_body,headers=hearders_params)
+        response = requests.post(submit_order_url, json=request_body,headers=headers_params)
         return response
 
     def get_all_orders(self, access_token):
@@ -74,8 +74,9 @@ class SimpleBooksRequests():
         return response
 
     def update_order(self, access_token, order_id, new_customer_name):
-        update_order_url = self.BASE_URL + self.ORDERS_ENDPOINT + f"/{order_id}"
+        update_order_url = self.BASE_URL + self.ORDERS_ENDPOINT + f"/:{order_id}"
         hearders_params = {"Authorization": access_token}
+
 
         #Documentatie: PATCH [NECESITA BODY] de tip JSON:request_body (se modifica doar nume client),
         # necesita autorizatie:headers_params si orderId (se modifica cate o carte)
