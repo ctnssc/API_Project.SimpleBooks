@@ -25,7 +25,7 @@ class TestSubmitOrder(unittest.TestCase):
         expected_created_message = True
         actual_created_message = response.json()['created']
         self.assertEqual(expected_created_message, actual_created_message, "Unexpected created message.")
-        self.order_id = response.json()["orderId"]
+
 
     def test_submit_order_invalid_bookid(self):
         invalid_book_id = 21
