@@ -27,5 +27,6 @@ class TestDeleteOrder(unittest.TestCase):
         response_get = self.books_API.get_order_byId(self.access_token, order_Id)
         new_expected_status_code = 404
         new_actual_status_code = response_get.status_code
+
         self.assertEqual(new_expected_status_code, new_actual_status_code, "Unexpected status code.")
 
