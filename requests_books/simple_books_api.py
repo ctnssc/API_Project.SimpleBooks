@@ -79,6 +79,12 @@ class SimpleBooksRequests():
         response = requests.get(get_order_byId_url,headers=hearders_params)
         return response
 
+    def delete_order_byId(self, access_token, order_id):
+        delete_order_byId_url = self.BASE_URL + self.ORDERS_ENDPOINT + f"/{order_id}"
+        hearders_params = {"Authorization": access_token}
+        response = requests.delete(delete_order_byId_url, headers=hearders_params)
+        return response
+
     def update_order(self, access_token, order_id, new_customer_name):
         update_order_url = self.BASE_URL + self.ORDERS_ENDPOINT + f"/{order_id}"
         hearders_params = {"Authorization": access_token}
